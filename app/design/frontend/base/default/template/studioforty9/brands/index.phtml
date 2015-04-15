@@ -1,0 +1,30 @@
+<?php
+/**
+ * Studioforty9 Brands
+ *
+ * @category  Studioforty9
+ * @package   Studioforty9_Brands
+ * @author    StudioForty9 <info@studioforty9.com>
+ * @copyright 2015 StudioForty9 (http://www.studioforty9.com)
+ * @license   https://github.com/studioforty9/brands/blob/master/LICENCE BSD
+ * @version   1.0.0
+ * @link      https://github.com/studioforty9/brands
+ */
+?>
+<?php /** @var Studioforty9_Brands_Block_Brand $this */ ?>
+<?php $_collection = $this->getCollection(); ?>
+<div class="page-title">
+    <h1><?php echo $this->__('Brands'); ?></h1>
+</div>
+<div class="category-products">
+    <?php echo $this->getPagerHtml(); ?>
+    <ul class="products-grid">
+    <?php foreach($_collection as $_brand): ?>
+        <li class="item brand">
+            <a href="<?php echo $_brand->getUrl(); ?>"><img src="<?php echo $_brand->getImageUrl(135, 135); ?>" alt="<?php echo $_brand->getName(); ?>" width="135" height="135"></a>
+            <h2 class="product-name"><a href="<?php echo $_brand->getUrl(); ?>" title="<?php echo $_brand->getName() ?>"><?php echo $_brand->getName() ?></a></h2>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <?php echo $this->getPagerHtml(); ?>
+</div>

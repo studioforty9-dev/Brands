@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Studioforty9 Brands
+ *
+ * @category  Studioforty9
+ * @package   Studioforty9_Brands
+ * @author    StudioForty9 <info@studioforty9.com>
+ * @copyright 2015 StudioForty9 (http://www.studioforty9.com)
+ * @license   https://github.com/studioforty9/brands/blob/master/LICENCE BSD
+ * @version   1.0.0
+ * @link      https://github.com/studioforty9/brands
+ */
+-->
+<config>
+    <modules>
+        <Studioforty9_Brands>
+            <version>1.0.0</version>
+        </Studioforty9_Brands>
+    </modules>
+    <global>
+        <blocks>
+            <studioforty9_brands>
+                <class>Studioforty9_Brands_Block</class>
+            </studioforty9_brands>
+            <studioforty9_brands_adminhtml>
+                <class>Studioforty9_Brands_Block_Adminhtml</class>
+            </studioforty9_brands_adminhtml>
+        </blocks>
+        <helpers>
+            <studioforty9_brands>
+                <class>Studioforty9_Brands_Helper</class>
+            </studioforty9_brands>
+        </helpers>
+        <models>
+            <studioforty9_brands>
+                <class>Studioforty9_Brands_Model</class>
+                <resourceModel>studioforty9_brands_resource</resourceModel>
+            </studioforty9_brands>
+            <studioforty9_brands_resource>
+                <class>Studioforty9_Brands_Model_Resource</class>
+                <entities>
+                    <brand>
+                        <table>studioforty9_brands</table>
+                    </brand>
+                </entities>
+            </studioforty9_brands_resource>
+        </models>
+        <resources>
+            <studioforty9_brands_setup>
+                <setup>
+                    <module>Studioforty9_Brands</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </studioforty9_brands_setup>
+        </resources>
+        <rewrite>
+            <brand_url>
+                <from><![CDATA[#^/brands/(.*)/#]]></from>
+                <to><![CDATA[brands/index/list/url_key/$1]]></to>
+                <complete><![CDATA[#^brands/(.*)/#]]></complete>
+            </brand_url>
+        </rewrite>
+    </global>
+    <frontend>
+        <routers>
+            <studioforty9_brands>
+                <use>standard</use>
+                <args>
+                    <module>Studioforty9_Brands</module>
+                    <frontName>brands</frontName>
+                </args>
+            </studioforty9_brands>
+        </routers>
+        <layout>
+            <updates>
+                <studioforty9_brands>
+                    <file>studioforty9_brands.xml</file>
+                </studioforty9_brands>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <studioforty9_brands>
+                    <files>
+                        <default>Studioforty9_Brands.csv</default>
+                    </files>
+                </studioforty9_brands>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <studioforty9_brands>
+                    <file>studioforty9_brands.xml</file>
+                </studioforty9_brands>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Studioforty9_Brands>
+                    <files>
+                        <default>Studioforty9_Brands.csv</default>
+                    </files>
+                </Studioforty9_Brands>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <Studioforty9_Brands after="Mage_Adminhtml">Studioforty9_Brands_Adminhtml</Studioforty9_Brands>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <default>
+        <studioforty9_brands>
+            <default>
+                <breadcrumbs>1</breadcrumbs>
+                <uselink>0</uselink>
+                <link>Brands</link>
+            </default>
+            <seo>
+                <title>Brands</title>
+                <keywords></keywords>
+                <description></description>
+            </seo>
+            <brand>
+                <perpage>15,30,50,100</perpage>
+            </brand>
+        </studioforty9_brands>
+    </default>
+    <phpunit>
+        <suite>
+            <modules>
+                <Studioforty9_Brands/>
+            </modules>
+        </suite>
+    </phpunit>
+</config>

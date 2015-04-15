@@ -1,0 +1,5 @@
+app/code/community/Studioforty9/Brands app/code/community/Studioforty9/Brands
+app/locale/en_US/Studioforty9_Brands.csv app/locale/en_US/Studioforty9_Brands.csv
+app/etc/modules/Studioforty9_Brands.xml app/etc/modules/Studioforty9_Brands.xml
+app/design/frontend/base/default/layout/studioforty9_brands.xml app/design/frontend/base/default/layout/studioforty9_brands.xml
+app/design/frontend/base/default/template/studioforty9/brands app/design/frontend/base/default/template/studioforty9/brands

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Studioforty9 Brands
+ *
+ * @category  Studioforty9
+ * @package   Studioforty9_Brands
+ * @author    StudioForty9 <info@studioforty9.com>
+ * @copyright 2015 StudioForty9 (http://www.studioforty9.com)
+ * @license   https://github.com/studioforty9/brands/blob/master/LICENCE BSD
+ * @version   1.0.0
+ * @link      https://github.com/studioforty9/brands
+ */
+-->
+<config>
+    <menu>
+        <studioforty9_brands translate="title" module="studioforty9_brands">
+            <title>Brands</title>
+            <sort_order>75</sort_order>
+            <depends>
+                <module>Studioforty9_Brands</module>
+            </depends>
+            <!-- Under this top-level menu, create a child menu item. -->
+            <children>
+                <brand translate="title" module="studioforty9_brands">
+                    <title>Manage Brands</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/brand</action>
+                </brand>
+            </children>
+        </studioforty9_brands>
+    </menu>
+    <!-- Define ACL for access to these menu items. -->
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <studioforty9_brands translate="title" module="studioforty9_brands">
+                        <title>Brands</title>
+                        <sort_order>75</sort_order>
+                        <children>
+                            <brand translate="title" module="studioforty9_brands">
+                                <title>Manage Brands</title>
+                            </brand>
+                        </children>
+                    </studioforty9_brands>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <studioforty9_brands>
+                                        <title>StudioForty9 Brands Configuration</title>
+                                    </studioforty9_brands>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
