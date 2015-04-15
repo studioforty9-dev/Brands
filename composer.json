@@ -1,10 +1,10 @@
 {
-  "name": "studioforty9/gallery",
-  "description": "Magento Gallery Extension",
+  "name": "studioforty9/brands",
+  "description": "Magento Brands Extension",
   "type": "magento-module",
-  "homepage": "https://github.com/studioforty9/gallery",
+  "homepage": "https://github.com/studioforty9/brands",
   "license": "BSD-3-Clause",
-  "keywords": ["gallery", "albums"],
+  "keywords": ["brands"],
   "authors": [
     {
       "name": "StudioForty9",
