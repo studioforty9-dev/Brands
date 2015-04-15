@@ -43,7 +43,7 @@ Once you've got the extension installed, you can configure some defaults via Sys
 
 You can choose to show/hide breadcrumbs. You can show/hide a link in the top.links block, you can also label that link whatever you want.
 
-You can also set the SEO title, keywords and description for the brands index page, all albums and media have fields for SEO title, keywords and description individually.
+You can also set the SEO title, keywords and description for the brands index page.
 
 A new menu item for Brands will be added to the top menu. You can add, edit and delete brands. A product attribute 'brand_id' will automatically be created. You can choose to show the attribute in layered navigation, search, in the product listing etc yourself.
 
