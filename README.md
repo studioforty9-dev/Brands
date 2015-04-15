@@ -6,6 +6,11 @@
 - Adds a new route to display products by brand
 - Allows for management of brands via an admin interface
 
+## Upcoming Features
+
+- Multi store
+- SEO data for each brand
+
 ## Installation
 
 ### Composer
