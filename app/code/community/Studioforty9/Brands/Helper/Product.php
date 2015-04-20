@@ -33,14 +33,15 @@ class Studioforty9_Brands_Helper_Product extends Mage_Core_Helper_Abstract
             ->addPriceData()
             ->addTaxPercents()
             ->addUrlRewrite()
+            ->addAttributeToFilter('brand_id', array('eq' => $brandId))
+            ->addStoreFilter()
             ->joinTable(
                 'studioforty9_brands/brand',
-                'entity_id=entity_id',
+                'entity_id=brand_id',
                 array('brand_name' => 'name', 'brand_image' => 'logo_image'),
                 '(studioforty9_brands.visibility=1 AND studioforty9_brands.entity_id=' . $brandId . ')',
                 'left'
-            )
-            ->addStoreFilter();
+            );
                 
         return $products;
     }
@@ -53,21 +54,14 @@ class Studioforty9_Brands_Helper_Product extends Mage_Core_Helper_Abstract
      */
     public function findByUrlKey($urlKey)
     {
-        $products = Mage::getResourceModel('catalog/product_collection')
-            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-            ->addPriceData()
-            ->addTaxPercents()
-            ->addUrlRewrite()
-            ->joinTable(
-                'studioforty9_brands/brand',
-                'entity_id=entity_id',
-                array('brand_name' => 'name', 'brand_image' => 'logo_image'),
-                '(studioforty9_brands.visibility=1 AND studioforty9_brands.url_key="' . $urlKey . '")',
-                'left'
-            )
-            ->addStoreFilter();
+        $brand = Mage::getModel('studioforty9_brands/brand')->load($urlKey, 'url_key');
+        $brandId = (int) $brand->getId();
+
+        if ($brandId === 0) {
+            return false;
+        }
                 
-        return $products;
+        return $this->findByBrandId($brandId);
     }
     
     /**
