@@ -45,4 +45,34 @@ class Studioforty9_Brands_Model_Source_Brand extends Mage_Eav_Model_Entity_Attri
 
         return $options;
     }
+
+    /**
+     * Retrieve flat column definition
+     *
+     * @return array
+     */
+    public function getFlatColums()
+    {
+        $attributeCode = $this->getAttribute()->getAttributeCode();
+        $column = array(
+            'type'  => 'int',
+            'unsigned'  => true,
+            'default'   => 0,
+            'comment' => $attributeCode . ' column'
+        );
+
+        return array($attributeCode => $column);
+    }
+
+    /**
+     * Retrieve Select For Flat Attribute update
+     *
+     * @param int $store
+     * @return Varien_Db_Select|null
+     */
+    public function getFlatUpdateSelect($store)
+    {
+        return Mage::getResourceModel('eav/entity_attribute')
+            ->getFlatUpdateSelect($this->getAttribute(), $store);
+    }
 }
