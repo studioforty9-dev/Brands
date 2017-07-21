@@ -57,14 +57,18 @@ class Studioforty9_Brands_Model_Brand extends Mage_Core_Model_Abstract
     public function getImageUrl($width, $height, $quality = 90)
     {
         $filename = $this->getLogoImage();
-        
+
         if (empty($filename)) {
             return '';
         }
-        
+
         $srcPath = Mage::getBaseDir() .'/media/brand/' . $filename;
         $newPath = Mage::getBaseDir() .'/media/brand/resized/' . $width .'x'. $height . '/' . $filename;
-        
+
+        if (! file_exists($srcPath)) {
+            return $filename;
+        }
+
         $imageObj = new Varien_Image($srcPath);
         $imageObj->constrainOnly(false);
         $imageObj->keepAspectRatio(true);
@@ -73,7 +77,7 @@ class Studioforty9_Brands_Model_Brand extends Mage_Core_Model_Abstract
         $imageObj->quality($quality);
         $imageObj->resize($width, $height);
         $imageObj->save($newPath);
-        
+
         return str_replace(Mage::getBaseDir(), trim(Mage::getBaseUrl(), '/'), $newPath);
     }
 
