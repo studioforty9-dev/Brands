@@ -28,24 +28,25 @@ class Studioforty9_Brands_Helper_Product extends Mage_Core_Helper_Abstract
      */
     public function findByBrandId($brandId)
     {
-        $products = Mage::getResourceModel('catalog/product_collection')
-            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
-            ->addPriceData()
-            ->addTaxPercents()
-            ->addUrlRewrite()
-            ->addAttributeToFilter('brand_id', array('eq' => $brandId))
-            ->addStoreFilter()
-            ->joinTable(
-                'studioforty9_brands/brand',
-                'entity_id=brand_id',
-                array('brand_name' => 'name', 'brand_image' => 'logo_image'),
-                '(studioforty9_brands.visibility=1 AND studioforty9_brands.entity_id=' . $brandId . ')',
-                'left'
-            );
-                
+      $products = Mage::getResourceModel('catalog/product_collection')
+               ->setVisibility(Mage::getSingleton('catalog/product_visibility')->getVisibleInCatalogIds())
+               ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes())
+               ->addPriceData()
+               ->addTaxPercents()
+               ->addUrlRewrite()
+               ->addAttributeToFilter('brand_id', array('eq' => $brandId))
+               ->addStoreFilter()
+               ->joinTable(
+                   'studioforty9_brands/brand',
+                   'entity_id=brand_id',
+                   array('brand_name' => 'name', 'brand_image' => 'logo_image'),
+                   '(studioforty9_brands.visibility=1 AND studioforty9_brands.entity_id=' . $brandId . ')',
+                   'left'
+               );
+
         return $products;
     }
-    
+
     /**
      * Find products by Brand Url Key.
      *
@@ -60,10 +61,10 @@ class Studioforty9_Brands_Helper_Product extends Mage_Core_Helper_Abstract
         if ($brandId === 0) {
             return false;
         }
-                
+
         return $this->findByBrandId($brandId);
     }
-    
+
     /**
      * Find all products and attach brand information.
      *
@@ -84,7 +85,7 @@ class Studioforty9_Brands_Helper_Product extends Mage_Core_Helper_Abstract
                 'left'
             )
             ->addStoreFilter();
-                
+
         return $products;
     }
 }
